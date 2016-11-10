@@ -1,14 +1,15 @@
 {
-  "name": "geo",
+  "name": "GRB GIMT",
   "version": "1.0.0",
-  "description": "Website and backend script to load GRB data into postgis and explore",
+  "description": "Website and backend script to load GRB data into postgis and explore.  GRB GUI Import and Merge Tool", 
   "main": "index.js",
   "dependencies": {
     "catty": "0.0.8",
     "geojson-validation": "^0.1.6",
     "geojsontoosm": "^0.0.2",
     "jxon": "^2.0.0-beta.2",
-    "mapshaper": "^0.3.26"
+    "mapshaper": "^0.3.26",
+    "osm-and-geojson": "^0.1.2"
   },
   "devDependencies": {
     "browserify": "latest",
