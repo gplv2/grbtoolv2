@@ -22,14 +22,14 @@ echo "Provisioning virtual machine"
 echo "Install packages ..."
 # DISTRIB_RELEASE=14.04
 if [ "$DISTRIB_RELEASE" = "14.04" ]; then
-DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" postgresql postgis phpunit php7.0 php7.0-fpm php-dev php-pear php-config pkg-config pkgconf pkg-php-tools g++ make memcached libmemcached-dev build-essential python-software-properties php-memcached memcached php-memcache curl php-redis redis-server php5-cli git cmake 2> /dev/null
+DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" postgresql postgis phpunit php7.0 php7.0-fpm php-dev php-pear php-config pkg-config pkgconf pkg-php-tools g++ make memcached libmemcached-dev build-essential python-software-properties php-memcached memcached php-memcache curl php-redis redis-server php5-cli git cmake ccze 2> /dev/null
 fi
 
 # -o Dpkg::Options::=--force-confnew install
 
 if [ "$DISTRIB_RELEASE" = "16.04" ]; then
     echo "Install $DISTRIB_RELEASE packages ..."
-    DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" postgresql postgis phpunit php7.0 php7.0-fpm php-dev php-pear pkg-config pkgconf pkg-php-tools g++ make memcached libmemcached-dev build-essential python-software-properties php-memcached memcached php-memcache php-redis redis-server curl php-cli git cmake 2> /dev/null
+    DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" postgresql postgis phpunit php7.0 php7.0-fpm php-dev php-pear pkg-config pkgconf pkg-php-tools g++ make memcached libmemcached-dev build-essential python-software-properties php-memcached memcached php-memcache php-redis redis-server curl php-cli git cmake ccze 2> /dev/null
 fi
 
 echo "Updating Composer ..."
