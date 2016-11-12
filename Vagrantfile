@@ -62,15 +62,11 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", :inline => localscriptDir + "/apt-get.upgrade.sh"
 
   #config.vm.provision "shell", :inline => "exit 1"
+  # apt-get.upgrade.sh create.db.sh install.app.sh serve-nginx.sh
 
   config.vm.provision "shell" do |s|
     s.name = "Creating Postgres Database"
-    s.inline = localscriptDir + "/create-postgres.sh " + dbName + " " + dbUser
-  end
-
-  config.vm.provision "shell" do |s|
-    s.name = "Compiling custom code and installing modules"
-    s.inline = localscriptDir + "/install_sources.sh"
+    s.inline = localscriptDir + "/create.db.sh " + dbName + " " + dbUser
   end
 
   config.vm.provision "shell" do |s|
@@ -79,8 +75,8 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "shell" do |s|
-    s.name = "Installing GRB REST api framework"
-    s.inline = localscriptDir + "/install_api_sources.sh"
+    s.name = "Installing GRB GIMT framework"
+    s.inline = localscriptDir + "/install.app.sh"
   end
 
   config.vm.provision "shell" do |s|
