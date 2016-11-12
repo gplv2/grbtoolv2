@@ -59,9 +59,6 @@ sudo su - vagrant -c "cd /var/www && git clone https://github.com/gplv2/grbtool 
 
 echo "Completing installation composers/laravel (as vagrant user)"
 
-# Make cache dir
-sudo su - vagrant -c "cd /var/www/grb-api && mkdir bootstrap/cache"
-
 chown vagrant:vagrant /var/www
 chown -R vagrant:vagrant /var/www/grb-api
 
