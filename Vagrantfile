@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
   scriptDir = File.dirname(__FILE__)
   localscriptDir = "/vagrant/scripts"
   dbUser = "grb-data"
-  dbName = "apidev"
+  dbName = "grb-api"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
