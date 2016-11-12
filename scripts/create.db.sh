@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
+
 DB=$1;
 USER=$2;
 
 if [ ! -x "/etc/postgresql/9.5/main/postgresql.conf" ]; then
     printf "Enable listening on all interfaces"
     sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/" /etc/postgresql/9.5/main/postgresql.conf
+    sed -i "s/shared_buffers = 128MB/shared_buffers = 1024MB/" /etc/postgresql/9.5/main/postgresql.conf
+    sed -i "s/#work_mem = 4MB/work_mem = 32MB/" /etc/postgresql/9.5/main/postgresql.conf
+    sed -i "s/#maintenance_work_mem = 64MB/maintenance_work_mem = 256MB/" /etc/postgresql/9.5/main/postgresql.conf
 fi
 
 SUBNET=10.0.2.2/32
