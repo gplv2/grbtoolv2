@@ -40,6 +40,8 @@ echo "Installing the geo-api"
 
 #echo "Adding SSH hosts key"
 
+sudo su - vagrant -c "touch ~/.hushlogin"
+
 # Create known_hosts
 sudo su - vagrant -c "touch ~/.ssh/known_hosts"
 

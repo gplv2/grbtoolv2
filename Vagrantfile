@@ -91,6 +91,11 @@ Vagrant.configure("2") do |config|
     s.inline = "sudo service nginx restart; sudo service php7.0-fpm restart"
   end
 
+  config.vm.provision "shell" do |s|
+    s.name = "Downloading GRB datadump"
+    s.inline = localscriptDir + "/feed.grb.sh"
+  end
+
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
