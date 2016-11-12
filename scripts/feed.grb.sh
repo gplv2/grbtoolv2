@@ -14,14 +14,14 @@ wget --quiet $DATA
 # CREATE EXTENSION hstore;
 echo "Enable PostGIS on GRB database ..."
 
-psql --username=postgres --dbname=grb-api -c "CREATE EXTENSION postgis;"
-psql --username=postgres --dbname=grb-api -c "CREATE EXTENSION postgis_topology;"
-psql --username=postgres --dbname=grb-api -c "CREATE EXTENSION hstore;"
+su - postgres -c "psql -d grb-api -c 'CREATE EXTENSION postgis;'"
+su - postgres -c "psql -d grb-api -c 'CREATE EXTENSION postgis_topology;'"
+su - postgres -c "psql -d grb-api -c 'CREATE EXTENSION hstore;'"
 
 # psql --set ON_ERROR_STOP=on dbname < infile
 
 echo "Importing data ..."
-zcat /usr/local/src/grb.gz | psql psql --set ON_ERROR_STOP=on grb-api
+su - postgres -c "zcat /usr/local/src/grb.gz | psql --set ON_ERROR_STOP=on grb-api"
 
 echo "Done"
 
