@@ -32,8 +32,6 @@
     "autoload-dev": {
         "classmap": [
             "tests/TestCase.php",
-            "tests/DataProvider.php",
-            "tests/Unit/TransformerUtils.php"
         ]
     },
     "scripts": {
