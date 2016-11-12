@@ -74,7 +74,6 @@ sudo su - vagrant -c "cp /var/www/grb-api/.env.example /var/www/grb-api/.env"
 if [ ! -x "/var/www/grb-api/.env" ]; then 
     echo "Verifying postgres DB port"
     #sed -i 's/DB_PORT=5433/DB_PORT=5432/' /var/www/grb-api/.env
-else
 fi
 
 echo "Completing installation composers/laravel (as vagrant user)"
