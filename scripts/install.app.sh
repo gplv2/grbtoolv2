@@ -9,19 +9,19 @@ if [ -z "$DISTRIB_RELEASE" ] && [ -x /usr/bin/lsb_release ]; then
     DISTRIB_CODENAME=$(lsb_release -s -c)
 fi
 
-printf "Disable xdebug"
+echo "Disable xdebug"
 
 if [ -L /etc/php/7.0/cli/conf.d/20-xdebug.ini ]; then
-    printf "Disabling Xdebug for compilation - cli"
+    echo "Disabling Xdebug for compilation - cli"
     rm -f /etc/php/7.0/cli/conf.d/20-xdebug.ini
 fi
 
 if [ -L /etc/php/7.0/fpm/conf.d/20-xdebug.ini ]; then
-    printf "Disabling Xdebug for compilation - fpm"
+    echo "Disabling Xdebug for compilation - fpm"
     rm -f /etc/php/7.0/fpm/conf.d/20-xdebug.ini
 fi
 
-printf "Installing the geo-api"
+echo "Installing the geo-api"
 
 
 #echo "Installing SSH deployment keys"
@@ -67,25 +67,26 @@ sudo su - vagrant -c "cd /var/www/grb-api && composer install --no-progress"
 # dump autoload 1 time before migrate, it seems to need/want it
 sudo su - vagrant -c "cd /var/www/grb-api && composer dump-autoload"
 
-printf "Setting up the grb-api database config"
+echo "Setting up the grb-api database config"
+
+sudo su - vagrant -c "cp /var/www/grb-api/.env.example /var/www/grb-api/.env"
 
 if [ ! -x "/var/www/grb-api/.env" ]; then 
-    printf "Verifying postgres DB port"
+    echo "Verifying postgres DB port"
     #sed -i 's/DB_PORT=5433/DB_PORT=5432/' /var/www/grb-api/.env
 else
-    sudo su - vagrant -c "cp /var/www/grb-api/.env.example /var/www/grb-api/.env"
 fi
 
 echo "Completing installation composers/laravel (as vagrant user)"
 
-printf "Create migration table"
+echo "Create migration table"
 sudo su - vagrant -c "cd /var/www/grb-api && php artisan migrate:install"
-printf "Perform migrations"
+echo "Perform migrations"
 sudo su - vagrant -c "cd /var/www/grb-api && php artisan migrate"
-printf "Vendor publish"
+echo "Vendor publish"
 sudo su - vagrant -c "cd /var/www/grb-api && php artisan vendor:publish"
-printf "Optimize"
+echo "Optimize"
 sudo su - vagrant -c "cd /var/www/grb-api && php artisan optimize"
-printf "Dump autoload"
+echo "Dump autoload"
 sudo su - vagrant -c "cd /var/www/grb-api && composer dump-autoload"
 
