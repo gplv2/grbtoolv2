@@ -67,11 +67,13 @@ sudo su - vagrant -c "cd /var/www/grb-api && composer install --no-progress"
 # dump autoload 1 time before migrate, it seems to need/want it
 sudo su - vagrant -c "cd /var/www/grb-api && composer dump-autoload"
 
-printf "Setting up the grb-api base database config"
+printf "Setting up the grb-api database config"
 
 if [ ! -x "/var/www/grb-api/.env" ]; then 
     printf "Verifying postgres DB port"
     #sed -i 's/DB_PORT=5433/DB_PORT=5432/' /var/www/grb-api/.env
+else
+    sudo su - vagrant -c "cp /var/www/grb-api/.env.example /var/www/grb-api/.env"
 fi
 
 echo "Completing installation composers/laravel (as vagrant user)"
