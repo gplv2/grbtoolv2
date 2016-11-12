@@ -24,44 +24,47 @@ fi
 printf "Installing the geo-api"
 
 
-echo "Installing SSH deployment keys"
-if [ ! -d "~/.ssh" ]; then 
-    mkdir ~/.ssh
-    chmod 700 ~/.ssh
-fi
+#echo "Installing SSH deployment keys"
+#if [ ! -d "~/.ssh" ]; then 
+#    mkdir ~/.ssh
+#    chmod 700 ~/.ssh
+#fi
 
-cp /vagrant/scripts/deployment_key.rsa ~/.ssh/deployment_key.rsa
-cp /vagrant/scripts/deployment_key.rsa.pub ~/.ssh/deployment_key.rsa.pub
-cp /vagrant/scripts/ssh_config ~/.ssh/config
+#cp /vagrant/scripts/deployment_key.rsa ~/.ssh/deployment_key.rsa
+#cp /vagrant/scripts/deployment_key.rsa.pub ~/.ssh/deployment_key.rsa.pub
+#cp /vagrant/scripts/ssh_config ~/.ssh/config
 
-chmod 600 ~/.ssh/deployment_key.rsa
-chmod 644 ~/.ssh/deployment_key.rsa.pub
-chmod 644 ~/.ssh/config
+#chmod 600 ~/.ssh/deployment_key.rsa
+#chmod 644 ~/.ssh/deployment_key.rsa.pub
+#chmod 644 ~/.ssh/config
 
-echo "Adding SSH hosts key"
+#echo "Adding SSH hosts key"
 
 # Create known_hosts
-touch ~/.ssh/known_hosts
+sudo su - vagrant -c "touch ~/.ssh/known_hosts"
 
 # Add bitbuckets key
-ssh-keyscan bitbucket.org >> ~/.ssh/known_hosts
+sudo su - vagrant -c "ssh-keyscan bitbucket.org >> ~/.ssh/known_hosts"
 
 # Add bitbuckets key
-ssh-keyscan github.com >> ~/.ssh/known_hosts
+sudo su - vagrant -c "ssh-keyscan github.com >> ~/.ssh/known_hosts"
 
 echo "Cloning code"
 
-cd /var/www
-git clone https://github.com/gplv2/grbtool grb-api
+if [ -d "/var/www" ]; then 
+    chown vagrant:vagrant /var/www/
+fi
+
+sudo su - vagrant -c "cd /var/www && git clone https://github.com/gplv2/grbtool grb-api"
 
 echo "Completing installation composers/laravel (as vagrant user)"
+# Make cache dir
 sudo su - vagrant -c "cd /var/www/grb-api && mkdir bootstrap/cache"
 
 chown vagrant:vagrant /var/www
 chown -R vagrant:vagrant /var/www/grb-api
 
 sudo su - vagrant -c "cd /var/www/grb-api && composer install --no-progress"
-# Make cache dir
 
 # dump autoload 1 time before migrate, it seems to need/want it
 sudo su - vagrant -c "cd /var/www/grb-api && composer dump-autoload"
