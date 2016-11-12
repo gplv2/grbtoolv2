@@ -120,7 +120,7 @@ Homestead.yaml
 Homestead.json
 
 # Laravel 5 & Lumen specific
-bootstrap/cache/
+
 .env.*.php
 .env.php
 .env
