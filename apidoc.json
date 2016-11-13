@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The GRB GIMT Documentation",
   "title": "GRB GIMT API",
-  "url" : "http://grb.app",
+  "url" : "http://api.grb.app",
   "template": {
   	"withCompare": true,
   	"withGenerator": true
