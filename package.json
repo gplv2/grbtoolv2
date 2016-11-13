@@ -5,6 +5,7 @@
   "description": "Website and backend script to load GRB data into postgis and explore.  GRB GUI Import and Merge Tool", 
   "main": "index.js",
   "dependencies": {
+    "apidoc": "^0.16.1",
     "catty": "0.0.8",
     "geojson-validation": "^0.1.6",
     "geojsontoosm": "^0.0.2",
