@@ -4,6 +4,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Hello API special variable
+    |--------------------------------------------------------------------------
+    |
+    | Determine if the mail is enabled or not. When set to false, will never
+    | trigger sending emails to users. Don't have to put it false for testing
+    | it never sends emails in testing environments.
+    |
+    */
+    'enabled' => env('MAIL_ENABLED', true),
+
+    /*
+    |--------------------------------------------------------------------------
     | Mail Driver
     |--------------------------------------------------------------------------
     |
@@ -11,8 +23,7 @@ return [
     | sending of e-mail. You may specify which one you're using throughout
     | your application here. By default, Laravel is setup for SMTP mail.
     |
-    | Supported: "smtp", "mail", "sendmail", "mailgun", "mandrill",
-    |            "ses", "sparkpost", "log"
+    | Supported: "smtp", "mail", "sendmail", "mailgun", "mandrill", "ses", "log"
     |
     */
 
@@ -55,9 +66,11 @@ return [
     |
     */
 
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+    'from' => ['address' => env('MAIL_FROM_ADDRESS', null), 'name' => env('MAIL_FROM_NAME', null)],
+
+    'to' => [
+        'support' => ['address' => env('MAIL_TO_SUPPORT_ADDRESS', null), 'name' => env('MAIL_TO_SUPPORT_NAME', null)],
+        // .. add more below
     ],
 
     /*

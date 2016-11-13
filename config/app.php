@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'GRB GIMT API',
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_FULL_URL', 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -79,6 +79,12 @@ return [
 
     'locale' => 'en',
 
+    'supported_languages' => [
+        'en' => 'English',
+        'ar' => 'Arabic',
+        'ru' => 'Russian',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -103,7 +109,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', 'SomeRandomString'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -138,7 +144,7 @@ return [
     'providers' => [
 
         /*
-         * Laravel Framework Service Providers...
+         * Laravel Framework
          */
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -168,21 +174,8 @@ return [
          */
 
         //
-
-        /*
-         * Application Service Providers...
-         */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-	/* 3rd party apps
-         *
-         */
-        Barryvdh\Cors\ServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-	Dingo\Api\Provider\LaravelServiceProvider::class
+        App\Port\Provider\Providers\MainServiceProvider::class,
+        // NOTE: all packages service providers must be registered inside their containers service providers
     ],
 
     /*
@@ -230,7 +223,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        // NOTE: all packages aliases must be registered inside their containers service providers
     ],
 
 ];
