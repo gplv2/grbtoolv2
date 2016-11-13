@@ -182,6 +182,7 @@ return [
          */
         Barryvdh\Cors\ServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+	Dingo\Api\Provider\LaravelServiceProvider::class
     ],
 
     /*
