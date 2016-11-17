@@ -4,9 +4,11 @@ namespace App\Port\Tests\PHPUnit\Traits;
 
 use App;
 use App\Containers\Authorization\Models\Role;
+use App\Containers\Authorization\Tasks\AttachRoleTask;
 use App\Containers\User\Actions\CreateUserAction;
 use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Http\Response;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr as LaravelArr;
 use Illuminate\Support\Str as LaravelStr;
 use Mockery;
@@ -162,8 +164,8 @@ trait TestingTrait
         // if no user detail provided, use the default details.
         if (!$userDetails) {
             $userDetails = [
-                'name'     => 'Mahmoud Zalt',
-                'email'    => 'testing@poms.dev',
+                'name'     => 'Glenn Plas',
+                'email'    => 'glenn@bitless.be',
                 'password' => 'secret.Pass7',
             ];
         }
@@ -193,6 +195,23 @@ trait TestingTrait
         $user = $this->registerAndLoginTestingUser($userDetails);
 
         $user = $this->makeAdmin($user);
+
+        return $user;
+    }
+
+    /**
+     * Normal user with Developer Role
+     *
+     * @param null $userDetails
+     *
+     * @return  mixed
+     */
+    public function registerAndLoginTestingDeveloper($userDetails = null)
+    {
+        $user = $this->registerAndLoginTestingUser($userDetails);
+
+        // Give Developer Role to this User
+        App::make(AttachRoleTask::class)->run($user, ['developer']);
 
         return $user;
     }
@@ -334,6 +353,48 @@ trait TestingTrait
     public function injectEndpointId($endpoint, $id)
     {
         return str_replace("{id}", $id, $endpoint);
+    }
+
+    /**
+     * Make sure you have an image in `storage/tests/` named to `a.jpeg` or anything else
+     *
+     * @param string $original_name
+     * @param string $mime_type
+     * @param int    $size
+     *
+     * @return  \Illuminate\Http\UploadedFile
+     */
+    public static function getTestingFile($original_name = 'a.jpeg', $mime_type = 'image/jpeg', $size = 2476)
+    {
+        $path = storage_path('tests/' . $original_name);
+        $error = null;
+        $test = true;
+
+        $file = new UploadedFile($path, $original_name, $mime_type, $size, $error, $test);
+
+        return $file;
+    }
+
+    /**
+     * Create Application in the database with Token based on the User who made the request.
+     * And return headers array with the Application stored token in it.
+     * This is made to be used with the endpoints protected with `app.auth` middleware.
+     *
+     * @param string $endpoint
+     * @param string $verb
+     * @param array  $data
+     */
+    public function getApplicationTokenHeader(
+        $endpoint = 'apps/',
+        $verb = 'post',
+        $data = ['name' => 'Testing Application']
+    ) {
+        $application = $this->apiCall($endpoint, $verb, $data);
+
+        // override the header with the application token instead of the default user token
+        $headers['Authorization'] = 'Bearer ' . $this->getResponseObject($application)->application_token;
+
+        return $headers;
     }
 
 }
