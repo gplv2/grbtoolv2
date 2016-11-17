@@ -1,3 +1,4 @@
+[![Open Source Love](https://badges.frapsoft.com/os/gpl/gpl.svg?v=102)]
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/gplv2/grbtool/badges/quality-score.png?s=4023c984fc1163a44f4220cd7d57406643ced9f2)]
 [![Code Coverage](https://scrutinizer-ci.com/g/gplv2/grbtool/badges/coverage.png?s=531ebd5f55891dfc816ace082531adfb24d194e9)]
 [![Build](https://scrutinizer-ci.com/g/gplv2/grbtool/badges/build.png?b=master]
