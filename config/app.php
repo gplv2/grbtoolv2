@@ -227,7 +227,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         // NOTE: all packages aliases must be registered inside their containers service providers
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-    ],
+        'Debugbar' => Barryvdh\Debugbar\Facade::class
+    ]
 
 ];
