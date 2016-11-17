@@ -1,13 +1,7 @@
-[![Open Source Love](https://badges.frapsoft.com/os/gpl/gpl.svg?v=102)](https://packagist.org/packages/matthiasnoback/badges)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/gplv2/grbtool/badges/quality-score.png?s=4023c984fc1163a44f4220cd7d57406643ced9f2)](https://packagist.org/packages/matthiasnoback/badges)
-[![Code Coverage](https://scrutinizer-ci.com/g/gplv2/grbtool/badges/coverage.png?s=531ebd5f55891dfc816ace082531adfb24d194e9)](https://packagist.org/packages/matthiasnoback/badges)
-[![Build](https://scrutinizer-ci.com/g/gplv2/grbtool/badges/build.png?b=master)](https://packagist.org/packages/matthiasnoback/badges)
-
-
-
-[![Latest Stable Version](https://poser.pugx.org/matthiasnoback/badges/v/stable.png)](https://packagist.org/packages/matthiasnoback/badges)
-
-## Coveralls
+[![Open Source Love](https://badges.frapsoft.com/os/gpl/gpl.svg?v=102)](https://github.com/gplv2/grbtool)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/gplv2/grbtool/badges/quality-score.png?s=4023c984fc1163a44f4220cd7d57406643ced9f2)](https://github.com/gplv2/grbtool)
+[![Code Coverage](https://scrutinizer-ci.com/g/gplv2/grbtool/badges/coverage.png?s=531ebd5f55891dfc816ace082531adfb24d194e9)](https://github.com/gplv2/grbtool)
+[![Build](https://scrutinizer-ci.com/g/gplv2/grbtool/badges/build.png?b=master)](https://github.com/gplv2/grbtool)
 
 # grbtool
 GRB-GIMT: GRB GUI Import and Merge Tool.  Production site for GRB import work flemish part of Belgium
