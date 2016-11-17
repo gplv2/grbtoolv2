@@ -26,6 +26,7 @@
         "merge-plugin": {
             "include": [
                 "app/Port/composer.json",
+        "app/Containers/composer.json",
                 "app/Containers/*/composer.json"
              ],
          "recurse": true,
@@ -84,5 +85,6 @@
   "config": {
     "preferred-install": "dist"
   },
-  "minimum-stability": "stable"
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

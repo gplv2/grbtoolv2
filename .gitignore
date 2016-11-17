@@ -12,6 +12,7 @@ composer.lock
 /public/api/
 /public/uploads/
 
+/app/Containers/
 !app/Containers/composer.json
 
 laradock*/
@@ -144,3 +145,4 @@ old_tests
 # compiled exec
 tests/c_server/serverc
 .vagrant
+
