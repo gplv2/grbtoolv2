@@ -172,9 +172,11 @@ return [
         /*
          * Package Service Providers...
          */
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         //
-        App\Port\Provider\Providers\MainServiceProvider::class,
+        App\Port\Provider\Providers\MainServiceProvider::class
         // NOTE: all packages service providers must be registered inside their containers service providers
     ],
 
@@ -224,6 +226,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         // NOTE: all packages aliases must be registered inside their containers service providers
+	'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

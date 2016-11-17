@@ -16,7 +16,7 @@ class DeleteUserTest extends TestCase
 
     public function testDeleteExistingUser_()
     {
-        $user = $this->getLoggedInTestingAdmin();
+        $user = $this->getLoggedInTestingUser();
 
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'delete');
