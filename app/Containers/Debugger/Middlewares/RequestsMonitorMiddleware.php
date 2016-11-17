@@ -31,7 +31,7 @@ class RequestsMonitorMiddleware
 
             Log::debug('');
             Log::debug('');
-            Log::debug('REQUEST START-------------------------------------------------------');
+            Log::debug('REQUEST START------------------------------------------------------');
 
             // Endpoint URL:
             Log::debug('URL: ' . $request->getMethod() . ' ' . $request->fullUrl());

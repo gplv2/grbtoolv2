@@ -5,9 +5,8 @@
   },
   "require": {
     "composer/installers": "~1.0",
-      "zizaco/entrust": "5.2.x-dev@dev"
+      "zizaco/entrust": "5.2.x-dev"
   },
   "type": "porto-container",
-  "description": "Porto-SAP Container for Hello-API.",
-  "minimum-stability": "dev"
+  "description": "Porto-SAP Container for Hello-API."
 }

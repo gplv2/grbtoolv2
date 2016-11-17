@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Containers\Authentication\Adapters;
-
 use Tymon\JWTAuth\JWTAuth;
 
 /**
@@ -43,13 +42,21 @@ class JwtAuthAdapter
     }
 
     /**
+     * @return  \Tymon\JWTAuth\JWTAuth
+     */
+    public function parseToken()
+    {
+        return $this->jwtAuth->parseToken();
+    }
+
+    /**
      * @param $user
      *
      * @return mixed
      */
-    public function fromUser($user)
+    public function fromUser($user, array $customClaims = [])
     {
-        return $this->jwtAuth->fromUser($user);
+        return $this->jwtAuth->fromUser($user, $customClaims);
     }
 
     /**
@@ -71,6 +78,14 @@ class JwtAuthAdapter
     }
 
     /**
+     * @return  \Tymon\JWTAuth\Payload
+     */
+    public function getPayload()
+    {
+        return $this->jwtAuth->getPayload();
+    }
+
+    /**
      * @param $token
      *
      * @return mixed
@@ -85,8 +100,21 @@ class JwtAuthAdapter
      *
      * @return  mixed
      */
-    public function authenticateViaToken($token)
+    public function authenticateViaToken($token = null)
     {
         return $this->jwtAuth->authenticate($token);
     }
+
+    /**
+     * @param $customClaims
+     *
+     * @return  mixed
+     */
+    public function makeTokenWithCustomClaims($customClaims)
+    {
+        $payload = \Tymon\JWTAuth\Facades\JWTFactory::make($customClaims);
+
+        return $this->jwtAuth->encode($payload)->get();
+    }
+
 }
