@@ -12,7 +12,7 @@ tools:
     php_code_coverage: true
     php_pdepend: true
     sensiolabs_security_checker: true
-    external_code_coverage: true 
+    external_code_coverage: false 
     php_loc:
         enabled: true
         excluded_dirs: [vendor, tests]

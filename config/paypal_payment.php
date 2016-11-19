@@ -36,5 +36,5 @@ return array(
 		# Logging is most verbose in the 'FINE' level and
 		# decreases as you proceed towards ERROR
 		//'LogLevel' => 'FINE',
-	),
+	)
 );

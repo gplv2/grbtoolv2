@@ -164,8 +164,8 @@ trait TestingTrait
         // if no user detail provided, use the default details.
         if (!$userDetails) {
             $userDetails = [
-                'name'     => 'Glenn Plas',
-                'email'    => 'glenn@bitless.be',
+                'name'     => 'Glenn Plas 2',
+                'email'    => 'glenn2@bitless.be',
                 'password' => 'secret.Pass7',
             ];
         }

@@ -9,5 +9,7 @@
     "jenssegers/agent": "^2.3"
   },
   "type": "porto-container",
-  "description": "Porto-SAP Container for Hello-API."
+  "description": "Porto-SAP Container for Hello-API.",
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
